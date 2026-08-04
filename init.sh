@@ -7,11 +7,7 @@ if ! command -v tailscale &>/dev/null && [ -z "${TAILSCALE_SKIP:-}" ]; then
     exit 1
 fi
 
-# --- 1. Install / upgrade Claude Code ---
-echo "[*] Installing Claude Code..."
-curl -fsSL https://claude.ai/install.sh | bash
-
-# --- 2. Apply Claude Code settings ---
+# --- Apply Claude Code settings ---
 CONFIG_URL="https://raw.githubusercontent.com/subhamhimself/AI-Config/main/claude-settings.json"
 DIR="$HOME/.claude"
 PATH_FILE="$DIR/settings.json"
@@ -25,7 +21,7 @@ json.dump(data, open('$PATH_FILE', 'w'), indent=2)
 "
 echo "[+] Applied settings -> $PATH_FILE"
 
-# --- 3. Ensure claude is on PATH ---
+# --- Ensure claude is on PATH ---
 POSSIBLE_BINS=(
     "$HOME/.npm-global/bin"
     "$HOME/.claude/bin"

@@ -9,11 +9,13 @@ Claude Code settings for self-hosted models.
 ### Windows (PowerShell)
 
 ```powershell
+irm https://claude.ai/install.ps1 | iex
 irm https://raw.githubusercontent.com/subhamhimself/AI-Config/main/init.ps1 | iex
 ```
 
 ### Linux / Mac
 
 ```bash
+curl -fsSL https://claude.ai/install.sh | bash
 curl -fsSL https://raw.githubusercontent.com/subhamhimself/AI-Config/main/init.sh | bash
 ```

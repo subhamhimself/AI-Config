@@ -1,22 +1,16 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-    One-shot setup: installs Claude Code, then applies config.
+    Applies Claude Code config (settings + PATH).
 
     Prerequisite: you must be on Subham Pathak's Tailscale network.
-
-    Single command:
-      irm https://raw.githubusercontent.com/subhamhimself/AI-Config/main/init.ps1 | iex
+    Run after installing Claude Code.
 #>
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-# --- 1. Install / upgrade Claude Code ---
-Write-Host "[*] Installing Claude Code..."
-irm https://claude.ai/install.ps1 | iex
-
-# --- 2. Apply Claude Code settings ---
+# --- Apply Claude Code settings ---
 $ConfigUrl = 'https://raw.githubusercontent.com/subhamhimself/AI-Config/main/claude-settings.json'
 $Dir = Join-Path $env:USERPROFILE '.claude'
 $Path = Join-Path $Dir 'settings.json'
@@ -29,7 +23,7 @@ $raw = Invoke-RestMethod -Uri $ConfigUrl
 $raw | ConvertTo-Json -Depth 10 | Set-Content -Path $Path -NoNewline
 Write-Host "[+] Applied settings -> $Path"
 
-# --- 3. Ensure claude is on PATH ---
+# --- Ensure claude is on PATH ---
 $candidates = @(
     "$env:USERPROFILE\.local\bin"
     "$env:APPDATA\npm"
