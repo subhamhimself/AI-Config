@@ -9,8 +9,6 @@
     "permissions": {
         "deny": [
             "Workflow",
-            "Agent",
-            "Task",
             "SendMessage",
             "EnterPlanMode",
             "ExitPlanMode",
