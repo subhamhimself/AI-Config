@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# --- Prerequisite check ---
-if ! command -v tailscale &>/dev/null && [ -z "${TAILSCALE_SKIP:-}" ]; then
-    echo "[-] Tailscale is not running. You must be connected to Subham Pathak's Tailscale network for this to work."
-    exit 1
-fi
-
 # --- Apply Claude Code settings ---
 CONFIG_URL="https://raw.githubusercontent.com/subhamhimself/AI-Config/main/claude-settings.json"
 DIR="$HOME/.claude"
