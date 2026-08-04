@@ -43,5 +43,19 @@ if [[ "$PATH_ADDED" == false ]]; then
     echo "[!] Could not locate a claude binary directory — PATH was not changed."
 fi
 
+# --- Install RTK (Rust Token Killer) ---
+echo ""
+echo "[*] Installing RTK..."
+if command -v rtk &>/dev/null; then
+    echo "[+] RTK already installed ($(rtk --version 2>/dev/null || echo 'unknown version'))"
+else
+    curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+    if command -v rtk &>/dev/null; then
+        echo "[+] RTK installed successfully ($(rtk --version 2>/dev/null || echo 'ok'))"
+    else
+        echo "[!] RTK install may have failed — check that rtk is on your PATH."
+    fi
+fi
+
 echo ""
 echo "[+] Done."

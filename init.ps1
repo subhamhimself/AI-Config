@@ -51,4 +51,64 @@ if (-not $found) {
     Write-Host "[!] Could not locate a claude binary directory — PATH was not changed."
 }
 
-Write-Host "`n[+] Done."
+# --- Install RTK (Rust Token Killer) ---
+Write-Host "`n[*] Installing RTK..."
+
+$rtkBinDir = Join-Path $env:USERPROFILE '.local\bin'
+
+# Check if rtk is already available
+$existingRtk = Get-Command rtk -ErrorAction SilentlyContinue
+if ($existingRtk) {
+    Write-Host "[+] RTK already found at $($existingRtk.Source)"
+} else {
+    # Fetch latest release tag from GitHub API
+    try {
+        $release = Invoke-RestMethod -Uri 'https://api.github.com/repos/rtk-ai/rtk/releases/latest'
+        $tagName = $release.tag_name
+
+        # Find the Windows zip asset
+        $winAsset = $release.assets | Where-Object { $_.name -match 'pc-windows.*\.zip$' } | Select-Object -First 1
+        if (-not $winAsset) {
+            Write-Host "[!] Could not find a Windows zip asset in release $tagName — skipping RTK install."
+        } else {
+            Write-Host "[*] Downloading $($winAsset.name)..."
+
+            if (-not (Test-Path $rtkBinDir)) {
+                New-Item -ItemType Directory -Path $rtkBinDir -Force | Out-Null
+            }
+
+            $zipPath = Join-Path $env:TEMP 'rtk-latest.zip'
+            Invoke-WebRequest -Uri $winAsset.browser_download_url -OutFile $zipPath -UseBasicParsing | Out-Null
+
+            $extractDir = Join-Path $env:TEMP "rtk-$tagName"
+            Expand-Archive -Path $zipPath -DestinationPath $extractDir -Force
+
+            # Find the .exe in the extracted folder and copy to bin dir
+            $exeFiles = Get-ChildItem -Path $extractDir -Filter '*.exe' -Recurse
+            foreach ($exe in $exeFiles) {
+                Copy-Item -Path $exe.FullName -Destination $rtkBinDir -Force
+                Write-Host "[+] Copied $($exe.Name) -> $rtkBinDir"
+            }
+
+            # Clean up temp files
+            Remove-Item $zipPath -Force -ErrorAction SilentlyContinue
+            Remove-Item $extractDir -Recurse -Force -ErrorAction SilentlyContinue
+
+            # Refresh PATH so we can verify
+            $env:Path = [Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [Environment]::GetEnvironmentVariable('Path', 'User')
+        }
+    } catch {
+        Write-Host "[!] Failed to install RTK: $_"
+    }
+
+    # Verify installation
+    $verifyRtk = Get-Command rtk -ErrorAction SilentlyContinue
+    if ($verifyRtk) {
+        Write-Host "[+] RTK installed successfully"
+    } else {
+        Write-Host "[!] RTK install may have failed — check that $rtkBinDir is on your PATH."
+    }
+}
+
+Write-Host ""
+Write-Host "[+] Done."
