@@ -3,3 +3,4 @@ server/logs.txt
 *.log
 .vscode/
 !.vscode/settings.json
+logs.txt
