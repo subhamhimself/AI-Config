@@ -32,22 +32,22 @@ $candidates = @(
 )
 
 $currentPath = [Environment]::GetEnvironmentVariable('Path', 'User')
-$added = $false
+$found = $false
 
 foreach ($bin in $candidates) {
     if (Test-Path $bin) {
+        $found = $true
         if ($currentPath -notlike "*$bin*") {
             [Environment]::SetEnvironmentVariable('Path', "$currentPath;$bin", 'User')
             $env:Path = "$env:Path;$bin"
             Write-Host "[+] Added $bin to user PATH"
-            $added = $true
         } else {
             Write-Host "[+] $bin already on PATH"
         }
     }
 }
 
-if (-not $added) {
+if (-not $found) {
     Write-Host "[!] Could not locate a claude binary directory — PATH was not changed."
 }
 
