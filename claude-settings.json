@@ -1,48 +1,48 @@
 {
-    "availableModels":  [
-                            "qwen3.6-27b"
-                        ],
-    "enforceAvailableModels":  true,
-    "autoUpdatesChannel":  "latest",
-    "theme":  "dark",
-    "disableBundledSkills":  true,
-    "permissions":  {
-                        "deny":  [
-                                     "Workflow",
-                                     "Agent",
-                                     "Task",
-                                     "SendMessage",
-                                     "EnterPlanMode",
-                                     "ExitPlanMode",
-                                     "AskUserQuestion",
-                                     "CronCreate",
-                                     "CronDelete",
-                                     "CronList",
-                                     "ScheduleWakeup",
-                                     "EnterWorktree",
-                                     "ExitWorktree",
-                                     "ListMcpResourcesTool",
-                                     "ReadMcpResourceTool",
-                                     "ReadMcpResourceDirTool",
-                                     "ReportFindings",
-                                     "TaskOutput"
-                                 ]
-                    },
-    "env":  {
-                "ANTHROPIC_API_KEY":  "dummy",
-                "ANTHROPIC_BASE_URL":  "http://100.126.126.62:8080",
-                "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC":  "1",
-                "CLAUDE_CODE_ATTRIBUTION_HEADER":  "0",
-                "CLAUDE_CODE_DISABLE_1M_CONTEXT":  "1",
-                "CLAUDE_CODE_AUTO_COMPACT_WINDOW":  "100000",
-                "DISABLE_LOGIN_COMMAND":  "1",
-                "CLAUDE_CODE_DISABLE_WORKFLOWS":  "1",
-                "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY":  "1",
-                "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME":  "Qwen3.6-27B",
-                "ANTHROPIC_DEFAULT_OPUS_MODEL":  "qwen3.6-27b",
-                "ANTHROPIC_DEFAULT_OPUS_MODEL_DESCRIPTION":  "Qwen 3.6 27B Q4_K_M",
-                "CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT":  "1"
-            },
-    "autoMemoryEnabled":  false,
-    "includeCoAuthoredBy":  false
+    "availableModels": [
+        "qwen3.6-27b"
+    ],
+    "enforceAvailableModels": true,
+    "autoUpdatesChannel": "latest",
+    "theme": "dark",
+    "disableBundledSkills": true,
+    "permissions": {
+        "deny": [
+            "Workflow",
+            "Agent",
+            "Task",
+            "SendMessage",
+            "EnterPlanMode",
+            "ExitPlanMode",
+            "AskUserQuestion",
+            "CronCreate",
+            "CronDelete",
+            "CronList",
+            "ScheduleWakeup",
+            "EnterWorktree",
+            "ExitWorktree",
+            "ListMcpResourcesTool",
+            "ReadMcpResourceTool",
+            "ReadMcpResourceDirTool",
+            "ReportFindings",
+            "TaskOutput"
+        ]
+    },
+    "env": {
+        "ANTHROPIC_API_KEY": "dummy",
+        "ANTHROPIC_BASE_URL": "http://100.126.126.62:8080",
+        "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+        "CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
+        "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1",
+        "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "100000",
+        "DISABLE_LOGIN_COMMAND": "1",
+        "CLAUDE_CODE_DISABLE_WORKFLOWS": "1",
+        "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "Qwen3.6-27B",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL": "qwen3.6-27b",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL_DESCRIPTION": "Qwen 3.6 27B Q4_K_M",
+        "CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT": "1"
+    },
+    "autoMemoryEnabled": false,
+    "includeCoAuthoredBy": false
 }
