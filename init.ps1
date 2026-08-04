@@ -30,16 +30,16 @@ $raw | ConvertTo-Json -Depth 10 | Set-Content -Path $Path -NoNewline
 Write-Host "[+] Applied settings -> $Path"
 
 # --- 3. Ensure claude is on PATH ---
-$PossibleBins = @(
-    Join-Path $env:APPDATA 'npm',
-    Join-Path $env:LOCALAPPDATA 'Programs' 'Claude' 'bin',
-    Join-Path $env:USERPROFILE '.claude' 'bin'
+$candidates = @(
+    "$env:APPDATA\npm",
+    "$env:LOCALAPPDATA\Programs\Claude\bin",
+    "$env:USERPROFILE\.claude\bin"
 )
 
 $currentPath = [Environment]::GetEnvironmentVariable('Path', 'User')
 $added = $false
 
-foreach ($bin in $PossibleBins) {
+foreach ($bin in $candidates) {
     if (Test-Path $bin) {
         if ($currentPath -notlike "*$bin*") {
             [Environment]::SetEnvironmentVariable('Path', "$currentPath;$bin", 'User')
