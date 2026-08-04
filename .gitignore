@@ -1,0 +1,5 @@
+model_ggufs/*.gguf
+server/logs.txt
+*.log
+.vscode/
+!.vscode/settings.json
