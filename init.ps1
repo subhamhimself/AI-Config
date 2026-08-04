@@ -31,8 +31,9 @@ Write-Host "[+] Applied settings -> $Path"
 
 # --- 3. Ensure claude is on PATH ---
 $candidates = @(
-    "$env:APPDATA\npm",
-    "$env:LOCALAPPDATA\Programs\Claude\bin",
+    "$env:USERPROFILE\.local\bin"
+    "$env:APPDATA\npm"
+    "$env:LOCALAPPDATA\Programs\Claude\bin"
     "$env:USERPROFILE\.claude\bin"
 )
 
