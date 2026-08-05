@@ -8,6 +8,5 @@ services:
       - "2222:22"
     volumes:
       - E:/Projects:/projects
-      - C:/Users/Subham/.claude:/root/.claude
     tty: true
     stdin_open: true

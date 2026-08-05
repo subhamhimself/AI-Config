@@ -40,7 +40,8 @@
         "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "Qwen3.6-27B",
         "ANTHROPIC_DEFAULT_OPUS_MODEL": "qwen3.6-27b",
         "ANTHROPIC_DEFAULT_OPUS_MODEL_DESCRIPTION": "Qwen 3.6 27B Q4_K_M",
-        "CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT": "1"
+        "CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT": "1",
+        "IS_SANDBOX": "1"
     },
     "autoMemoryEnabled": false,
     "includeCoAuthoredBy": false,
