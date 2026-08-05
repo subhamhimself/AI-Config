@@ -1,0 +1,13 @@
+services:
+  ubuntu-dev:
+    build: .
+    container_name: ubuntu-dev
+    hostname: ubuntu-dev
+    restart: unless-stopped
+    ports:
+      - "2222:22"
+    volumes:
+      - E:/Projects:/projects
+      - ${HOME}/.claude:/root/.claude
+    tty: true
+    stdin_open: true
