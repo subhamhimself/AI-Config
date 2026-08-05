@@ -20,12 +20,22 @@ RUN apt-get update && \
         tmux && \
     rm -rf /var/lib/apt/lists/*
 
-# SSH - password auth
+# SSH - no auth (sandbox)
 RUN mkdir /var/run/sshd && \
-    echo 'root:12345678' | chpasswd
+    passwd -d root 2>/dev/null || true
 
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config && \
-    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config && \
+    echo 'PermitEmptyPasswords yes' >> /etc/ssh/sshd_config
+
+# Step 1 — Install Node.js 22 & npm
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y nodejs && \
+    rm -rf /var/lib/apt/lists/*
+
+# Step 2 — Install happy globally
+RUN npm i -g happy
 
 # Dotfiles
 COPY dotfiles/ /root/

@@ -8,5 +8,6 @@ services:
       - "2222:22"
     volumes:
       - E:/Projects:/projects
+      - D:/Shared:/shared
     tty: true
     stdin_open: true

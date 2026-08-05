@@ -24,7 +24,8 @@
             "ReadMcpResourceTool",
             "ReadMcpResourceDirTool",
             "ReportFindings",
-            "TaskOutput"
+            "TaskOutput",
+            "mcp__happy__change_title"
         ]
     },
     "env": {
