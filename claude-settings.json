@@ -10,6 +10,9 @@
         "deny": [
             "Workflow",
             "Task",
+            "TaskStop",
+            "NotebookEdit",
+            "WebSearch",
             "SendMessage",
             "EnterPlanMode",
             "ExitPlanMode",

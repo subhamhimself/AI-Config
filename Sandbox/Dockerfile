@@ -29,14 +29,6 @@ RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/
     sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config && \
     echo 'PermitEmptyPasswords yes' >> /etc/ssh/sshd_config
 
-# Step 1 — Install Node.js 22 & npm
-RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
-    apt-get install -y nodejs && \
-    rm -rf /var/lib/apt/lists/*
-
-# Step 2 — Install happy globally
-RUN npm i -g happy
-
 # Dotfiles
 COPY dotfiles/ /root/
 
