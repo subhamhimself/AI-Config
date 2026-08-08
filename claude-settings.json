@@ -13,6 +13,7 @@
             "TaskStop",
             "NotebookEdit",
             "WebSearch",
+            "WebFetch",
             "SendMessage",
             "EnterPlanMode",
             "ExitPlanMode",
@@ -28,7 +29,8 @@
             "ReadMcpResourceDirTool",
             "ReportFindings",
             "TaskOutput"
-        ]
+        ],
+        "defaultMode": "bypassPermissions"
     },
     "env": {
         "ANTHROPIC_API_KEY": "dummy",
@@ -44,6 +46,7 @@
         "ANTHROPIC_DEFAULT_OPUS_MODEL": "qwen3.6-27b",
         "ANTHROPIC_DEFAULT_OPUS_MODEL_DESCRIPTION": "Qwen 3.6 27B Q4_K_M",
         "CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT": "1",
+        "CLAUDE_CODE_DISABLE_WARNINGS": "1",
         "IS_SANDBOX": "1"
     },
     "autoMemoryEnabled": false,
