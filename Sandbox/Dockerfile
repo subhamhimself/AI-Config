@@ -32,8 +32,10 @@ RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/
 # Dotfiles
 COPY dotfiles/ /root/
 
-# Run init script on startup then start SSH
-COPY scripts/start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
+# Install Claude Code
+RUN curl -fsSL https://claude.ai/install.sh | bash
 
-CMD ["/usr/local/bin/start.sh"]
+# Run init script
+RUN curl -fsSL https://raw.githubusercontent.com/subhamhimself/AI-Config/main/init.sh | bash
+
+CMD ["/usr/sbin/sshd", "-D"]
